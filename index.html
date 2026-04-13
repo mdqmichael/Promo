@@ -1,192 +1,369 @@
+
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Câmera Inteligente IM4 - Intelbras</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #2c2c2c; /* cinza escuro */
-      color: #fff;
-      text-align: center;
-    }
-    header {
-      background: #ff7f00; /* laranja abóbora */
-      color: #fff;
-      padding: 20px;
-      border-bottom: 5px solid gold;
-    }
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin: 20px auto;
-      max-width: 1000px;
-    }
-    .card {
-      background: #3a3a3a;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4);
-      margin: 15px;
-      width: 280px;
-      overflow: hidden;
-      transition: transform 0.3s;
-      border-top: 4px solid gold;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    .card img {
-      width: 100%;
-      height: auto;
-      border-bottom: 3px solid #ff7f00;
-    }
-    .card-content {
-      padding: 15px;
-    }
-    .card-content h3 {
-      margin-top: 0;
-      color: gold;
-    }
-    ul {
-      padding-left: 20px;
-      text-align: left;
-    }
-    section {
-      padding: 20px;
-      background: #3a3a3a;
-      margin: 20px auto;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4);
-      max-width: 800px;
-      border-top: 4px solid gold;
-    }
-    section h2 {
-      color: gold;
-    }
-    /* Botão flutuante grande */
-    .floating-btn-big {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #ff7f00; /* laranja abóbora */
-      color: #fff;
-      border: none;
-      border-radius: 30px;
-      padding: 15px 25px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4);
-      transition: transform 0.3s;
-    }
-    .floating-btn-big:hover {
-      transform: scale(1.05);
-      background: gold;
-      color: #2c2c2c;
-    }
-    .floating-btn-big a {
-      color: inherit;
-      text-decoration: none;
-      display: block;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Promoção Especial Intelbras - Michael Oliveira</title>
+    <style>
+        :root {
+            --verde-principal: #00A335;
+            --verde-escuro: #007A28;
+            --branco: #ffffff;
+            --cinza-fundo: #f4f4f4;
+            --cinza-texto: #333;
+            --cinza-claro: #777;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--cinza-fundo);
+            margin: 0;
+            padding: 0;
+            color: var(--cinza-texto);
+        }
+
+        header {
+            background-color: var(--verde-principal);
+            color: var(--branco);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--verde-escuro);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: -30px auto 40px;
+            background: var(--branco);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        h1 { margin: 0; font-size: 2.2rem; text-transform: uppercase; }
+        h2 { color: var(--verde-principal); border-bottom: 2px solid var(--verde-principal); padding-bottom: 10px; margin-top: 30px; }
+        h3 { color: var(--verde-escuro); margin-top: 25px; }
+
+        .lista-produtos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .produto-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .produto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: var(--verde-principal);
+        }
+
+        .produto-nome {
+            font-weight: bold;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--cinza-texto);
+            line-height: 1.4;
+        }
+
+        .produto-preco {
+            font-size: 1.4rem;
+            color: var(--verde-principal);
+            font-weight: 800;
+        }
+
+        .regras-box {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        .cta-button {
+            display: block;
+            background-color: var(--verde-principal);
+            color: var(--branco);
+            text-align: center;
+            padding: 20px;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background 0.3s;
+            margin-top: 30px;
+            box-shadow: 0 4px 15px rgba(0, 163, 53, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: var(--verde-escuro);
+        }
+
+        .form-box {
+            margin-top: 25px;
+            text-align: center;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .form-box input {
+            padding: 12px;
+            width: 70%;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .form-box button {
+            background-color: var(--verde-principal);
+            color: var(--branco);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .form-box button:hover {
+            background-color: var(--verde-escuro);
+        }
+
+        .contato-info {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1.1rem;
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-note {
+            font-size: 0.8rem;
+            color: var(--cinza-claro);
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            cursor: pointer;
+            text-decoration: none;
+            z-index: 1000;
+        }
+
+        .rodape {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .rodape-link {
+            color: var(--verde-principal);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .container { margin: -20px 10px 20px; padding: 15px; }
+            h1 { font-size: 1.6rem; }
+            .form-box input { width: 90%; }
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>Câmera Inteligente IM4 - Intelbras</h1>
-    <p>Segurança e conectividade para sua empresa ou residência</p>
-  </header>
+<header>
+    <h1>Promoção Especial Intelbras</h1>
+    <p>Condições Exclusivas para Especialistas e Parceiros</p>
+</header>
 
-  <div class="container">
-    <div class="card">
-      <a href="https://ibb.co/7xznZRx1">
-        <img src="https://i.ibb.co/hxMB4Zxm/D-Q-NP-2-X-951998-MLA84547563234-052025-F.webp" alt="Câmera IM4 Intelbras">
-      </a>
-      <div class="card-content">
-        <h3>Instalação Residencial</h3>
-        <ul>
-          <li>Instalação simples e rápida via Wi-Fi</li>
-          <li>Configuração pelo aplicativo Intelbras</li>
-          <li>Compatível com roteadores modernos</li>
-        </ul>
-      </div>
+<div class="container">
+    <h2>Ofertas em Destaque</h2>
+    <p>Confira nossa seleção de produtos com preços imperdíveis para o seu projeto.</p>
+
+    <div class="lista-produtos">
+        <!-- Produtos da Lista -->
+        <div class="produto-card">
+            <div class="produto-nome">CENTRAL DE ALARME AMT 2010</div>
+            <div class="produto-preco">R$ 114,75</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">SENSOR DE MOVIMENTO SMART ISM 1001</div>
+            <div class="produto-preco">R$ 108,93</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">CAMERA IR VHD 3220 MINI DOME PRETA</div>
+            <div class="produto-preco">R$ 105,40</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">INTERRUPTOR CONTROLADOR DIMMER SMART WIFI EWS 252</div>
+            <div class="produto-preco">R$ 95,12</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">FONTE ALIMENT AC DC ININTERRUPTA 2A FA 1220 S MINI</div>
+            <div class="produto-preco">R$ 94,38</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">DETECTOR DE FUMACA ENDERECAVEL DFE 523</div>
+            <div class="produto-preco">R$ 91,18</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">DETECTOR OPTICO DE FUMACA CONVENCIONAL ECO 1003 A</div>
+            <div class="produto-preco">R$ 84,88</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">CAMPAINHA SEM FIO BRANCA E PRETA</div>
+            <div class="produto-preco">R$ 67,36</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">CENTRAL DE ALARME ANM 3004 ST</div>
+            <div class="produto-preco">R$ 67,09</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">ACIONADOR MANUAL END C MARTELO C SIRENE</div>
+            <div class="produto-preco">R$ 38,82</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">CENTRAL DE ALARME DE INCENDIO ENDERECAVEL CIE 1125</div>
+            <div class="produto-preco">R$ 1.137,10</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">ANGELIN RACK 19 12U 400MM OUTDOOR TORRE POSTE BEGE</div>
+            <div class="produto-preco">R$ 993,35</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">GATEWAY DE VOZ IP GW 204O</div>
+            <div class="produto-preco">R$ 876,61</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">AUTOMATIZADOR DE PORTADO DR 400 FAST</div>
+            <div class="produto-preco">R$ 594,20</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">RELE ATUADOR ON OFF OP MAN 2 CANAIS 16A</div>
+            <div class="produto-preco">R$ 568,25</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">CAMERA DE VIDEO BULLET VIP 3220 FC IA</div>
+            <div class="produto-preco">R$ 557,72</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">FECHADURA DIGITAL SOBREPOR PORTA DE CORRER FR 210</div>
+            <div class="produto-preco">R$ 497,29</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">SISTEMA DE COMUNICACAO TELEFONICA MINICOM SLIM</div>
+            <div class="produto-preco">R$ 39,41</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">CAMERA DOME VIP 1220 D FC+</div>
+            <div class="produto-preco">R$ 313,26</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">CAMERA BULLET 5MP IR 30M VHD 1530 B</div>
+            <div class="produto-preco">R$ 253,18</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">FECHADURA DIGITAL FD1000</div>
+            <div class="produto-preco">R$ 239,70</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">APARELHO TIP 125I EMBALAGEM COLORIDA</div>
+            <div class="produto-preco">R$ 199,89</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">CAMERA DOME 2MP IR 20 VHD 3220 D A G6</div>
+            <div class="produto-preco">R$ 145,91</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">LEITOR DE CARTAO RFID 125 KHZ LE130</div>
+            <div class="produto-preco">R$ 142,82</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">SWITCH 16P FAST SF 1600 Q+</div>
+            <div class="produto-preco">R$ 125,02</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">MODULO DE ZONA MDZ 521</div>
+            <div class="produto-preco">R$ 118,18</div>
+        </div>
+        <div class="produto-card">
+            <div class="produto-nome">CAMERA DOME VHD 1220 D G7</div>
+            <div class="produto-preco">R$ 117,56</div>
+        </div>
     </div>
 
-    <div class="card">
-      <a href="https://ibb.co/gMsmPBXh">
-        <img src="https://i.ibb.co/wNDBwxbj/D-Q-NP-2-X-903852-MLA99446684024-112025-F.webp" alt="Avisos no celular">
-      </a>
-      <div class="card-content">
-        <h3>Avisos no Celular</h3>
-        <ul>
-          <li>Notificações instantâneas de movimento</li>
-          <li>Alertas de áudio e vídeo em tempo real</li>
-          <li>Controle remoto direto pelo smartphone</li>
-        </ul>
-      </div>
+    <div class="regras-box">
+        <strong>⚠️ Importante:</strong> 
+        Estoque com poucas peças disponível, venda apenas para Revenda de Tecnologia que ainda não tenham comprado nos últimos 45 dias 
+    </br> Ou que sejam clientes do vendedor Michael Oliveira.
     </div>
 
-    <div class="card">
-      <a href="https://ibb.co/7xznZRx1">
-        <img src="https://i.ibb.co/hxMB4Zxm/D-Q-NP-2-X-951998-MLA84547563234-052025-F.webp" alt="Gravação SD">
-      </a>
-      <div class="card-content">
-        <h3>Gravação em Cartão SD</h3>
-        <ul>
-          <li>Suporte para cartão microSD</li>
-          <li>Armazenamento local seguro</li>
-          <li>Facilidade para acessar gravações</li>
-        </ul>
-      </div>
-    </div>
+    <h3>Como garantir seu desconto?</h3>
+    <p>O cadastro deve ser realizado diretamente com o consultor responsável. Alguns dados específicos serão solicitados para validação junto à fábrica.</p>
 
-    <div class="card">
-      <a href="https://ibb.co/gMsmPBXh">
-        <img src="https://i.ibb.co/wNDBwxbj/D-Q-NP-2-X-903852-MLA99446684024-112025-F.webp" alt="Gravação na nuvem">
-      </a>
-      <div class="card-content">
-        <h3>Gravação na Nuvem</h3>
-        <ul>
-          <li>Acesso remoto às gravações</li>
-          <li>Backup automático online</li>
-          <li>Segurança extra contra perda de dados</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <section>
-    <h2>Benefícios da Câmera IM4</h2>
-    <ul>
-      <li>Monitoramento em tempo real para maior segurança</li>
-      <li>Ideal para empresas que precisam de vigilância constante</li>
-      <li>Proteção residencial com visão ampla e detalhada</li>
-      <li>Facilidade de instalação e configuração</li>
-      <li>Redução de riscos e aumento da tranquilidade</li>
-      <li>Comunicação bidirecional com áudio</li>
-      <li>Monitoramento de pets e familiares</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Frete Full</h2>
-    <ul>
-      <li>Entrega rápida e segura</li>
-      <li>Produto disponível com logística Mercado Livre</li>
-      <li>Garantia de recebimento ágil</li>
-    </ul>
-  </section>
-
-  <!-- Botão flutuante grande -->
-  <button class="floating-btn-big">
-    <a href="https://www.mercadolivre.com.br/camera-inteligente-full-hd-visao-360-im4-c-black-intelbras/up/MLBU3428909601?pdp_filters=item_id%3AMLB5724961694&matt_tool=38524122#origin=share&sid=share&wid=MLB5724961694" target="_blank">
-      Compre no Mercado Livre
+    <a href="https://wa.me/556332339412?text=Olá%2C%20gostaria%20de%20aproveitar%20as%20ofertas%20da%20Intelbras." class="cta-button">
+        FALAR COM MICHAEL OLIVEIRA
     </a>
-  </button>
+
+    <div class="form-box">
+        <input type="text" id="nomeCliente" placeholder="Digite seu nome">
+        <button onclick="enviarWhatsApp()">Enviar para WhatsApp</button>
+    </div>
+
+    <div class="contato-info">
+        <strong>Telefone: (63) 3233-9412</strong><br>
+        Palmas - TO
+    </div>
+
+    <div class="rodape">
+        <p>
+            <a href="https://shadai.com.br" target="_blank" class="rodape-link">
+                Gostou do site? Clique aqui e saiba mais.
+            </a>
+        </p>
+    </div>
+</div>
+
+<!-- Botão flutuante WhatsApp -->
+<a href="https://wa.me/556332339412?text=Olá%2C%20gostaria%20de%20aproveitar%20as%20ofertas%20da%20Intelbras." class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+function enviarWhatsApp() {
+    const nome = document.getElementById("nomeCliente").value;
+    const mensagem = `Olá, meu nome é ${nome}. Gostaria de saber mais sobre as promoções da Intelbras.`;
+    const url = `https://wa.me/556332339412?text=${encodeURIComponent(mensagem)}`;
+    window.open(url, "_blank");
+}
+</script>
 
 </body>
 </html>
